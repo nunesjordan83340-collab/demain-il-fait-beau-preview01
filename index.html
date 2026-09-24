@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demain, il fait beau · Aperçu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+</head>
+<body class="dib-body">
+
+<div class="dib-cookie" id="dib-cookie" hidden>
+  <div class="dib-cookie__box">
+    <div class="dib-cookie__text">Nous utilisons uniquement une mesure d'audience anonymisée. Aucun cookie publicitaire, aucune revente de données. <a href="rgpd.html">En savoir plus</a></div>
+    <div class="dib-cookie__actions">
+      <button type="button" class="dib-btn-ghost" id="dib-cookie-decline">Refuser</button>
+      <button type="button" class="dib-btn-solid" id="dib-cookie-accept">Accepter</button>
+    </div>
+  </div>
+</div>
+
+<div class="dib-progress" id="dib-progress"></div>
+<div class="dib-grain" id="dib-grain"></div>
+
+<main id="dib-main">
+  <div class="dib-hero-spacer" data-a="heroSpacer"></div>
+
+  <div class="dib-hero" data-a="hero">
+    <div class="dib-hero__photo" data-a="heroPhoto">
+      <video class="dib-hero__video is-active" data-a="heroVideo" muted playsinline preload="auto" autoplay poster="images/hero-poster-default.png">
+        <source src="videos/hero-1.mp4" type="video/mp4">
+      </video>
+      <video class="dib-hero__video" data-a="heroVideo" muted playsinline preload="metadata">
+        <source src="videos/hero-2.mp4" type="video/mp4">
+      </video>
+      <video class="dib-hero__video" data-a="heroVideo" muted playsinline preload="metadata">
+        <source src="videos/hero-3.mp4" type="video/mp4">
+      </video>
+      <video class="dib-hero__video" data-a="heroVideo" muted playsinline preload="metadata">
+        <source src="videos/hero-4.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="dib-hero__dots" data-a="heroDots">
+      <div class="dib-hero__dot is-active" data-a="heroDot"></div>
+      <div class="dib-hero__dot" data-a="heroDot"></div>
+      <div class="dib-hero__dot" data-a="heroDot"></div>
+      <div class="dib-hero__dot" data-a="heroDot"></div>
+    </div>
+
+    <div class="dib-hero__veil-1"></div>
+    <div class="dib-hero__veil-2"></div>
+    <div class="dib-hero__dark" data-a="heroDark"></div>
+
+    <div class="dib-hero__nav" data-a="heroNav">
+      <a href="toutes-les-histoires.html" class="dib-pill"><span class="dib-pill__dot"></span>Journal</a>
+    </div>
+
+    <div class="dib-hero__center">
+      <div class="dib-hero__text" data-a="heroText">
+        <div class="dib-hero__title" style="--dib-hero-title-size:76px">Demain, il fait beau<span class="dib-asterisk">*</span></div>
+        <div class="dib-hero__desc">Des histoires vraies qui donnent envie d'avancer. Chaque jour, une bonne nouvelle vérifiée, racontée avec soin.</div>
+        <a href="toutes-les-histoires.html" class="dib-hero__cta">Lire une histoire</a>
+      </div>
+    </div>
+
+    <div class="dib-hero__scroll" data-a="scrollHint">
+      <div class="dib-hero__scroll-line"></div>
+      <div class="dib-hero__scroll-label">Scroll</div>
+    </div>
+  </div>
+
+  <div class="dib-grid-zone" data-a="gridZone">
+    <div class="dib-grid" data-a="grid">
+      <!-- 9 tuiles générées en JS pour éviter la répétition -->
+    </div>
+  </div>
+</main>
+
+<footer class="dib-footer">
+  <div class="dib-footer__top">
+    <div class="dib-footer__brand">
+      <div class="dib-footer__logo">Demain, il fait beau<em>*</em></div>
+      <div class="dib-footer__tagline">Un média positif, à but non lucratif. Chaque jour, une bonne nouvelle vérifiée et racontée avec soin.</div>
+    </div>
+    <div>
+      <div class="dib-footer__follow-label">Nous suivre</div>
+      <div class="dib-footer__socials">
+        <a href="#" class="dib-social"><span class="dib-social__badge" style="background:var(--dib-orange)">IG</span>Instagram</a>
+        <a href="#" class="dib-social"><span class="dib-social__badge" style="background:var(--dib-green)">TT</span>TikTok</a>
+        <a href="#" class="dib-social"><span class="dib-social__badge" style="background:var(--dib-blue)">f</span>Facebook</a>
+      </div>
+    </div>
+  </div>
+  <div class="dib-footer__bottom">
+    <div>© 2026 Demain, il fait beau · Association loi 1901</div>
+    <div class="dib-footer__links">
+      <a href="cgu.html">Mentions légales</a>
+      <a href="rgpd.html">Confidentialité</a>
+      <a href="mailto:contact@demainilfaitbeau.fr">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Génère les 9 tuiles avec les mêmes textes que la maquette, sans photo
+// (comme le vrai site tant que les photos ne sont pas fournies).
+var stories = [
+  { cat: 'ASSOCIATION', h: 145, title: "Ils replantent une forêt entière avec les habitants du village", accent: 'var(--dib-green)' },
+  { cat: 'INNOVATION', h: 235, title: "Une éolienne de poche qui recharge tout un village isolé", accent: 'var(--dib-blue)' },
+  { cat: 'SOLIDARITÉ', h: 25, title: "Des voisins transforment un parking en potager partagé", accent: 'var(--dib-orange)' },
+  { cat: 'ARTICLE', h: 25, title: "Ce quartier a divisé sa consommation d'énergie par deux", accent: 'var(--dib-orange)' },
+  { cat: 'JOURNAL', h: 235, title: "Le mentorat gratuit qui redonne confiance à 400 lycéens", accent: 'var(--dib-blue)' },
+  { cat: 'ASSOCIATION', h: 145, title: "Une ressourcerie sauve 12 tonnes d'objets chaque mois", accent: 'var(--dib-green)' },
+  { cat: 'INNOVATION', h: 235, title: "Ils recyclent les filets de pêche en skateboards", accent: 'var(--dib-blue)' },
+  { cat: 'SOLIDARITÉ', h: 25, title: "Un café suspendu réchauffe les soirées d'hiver du village", accent: 'var(--dib-orange)' },
+  { cat: 'ARTICLE', h: 145, title: "La bibliothèque de rue qui rassemble tout le quartier", accent: 'var(--dib-green)' }
+];
+var grid = document.querySelector('[data-a="grid"]');
+stories.forEach(function (s) {
+  var a = document.createElement('a');
+  a.className = 'dib-tile';
+  a.href = 'toutes-les-histoires.html';
+  a.setAttribute('data-a', 'gTile');
+  a.innerHTML =
+    '<div data-a="gImg" class="dib-tile__img no-photo" style="--h:' + s.h + '"></div>' +
+    '<div class="dib-tile__veil"></div>' +
+    '<div data-a="gTint" class="dib-tile__tint" style="background:' + s.accent + '"></div>' +
+    '<div class="dib-tile__body">' +
+      '<div data-a="gCat" class="dib-tile__cat"><span class="dib-tile__cat-dot" style="background:' + s.accent + '"></span><span class="dib-tile__cat-label">' + s.cat + '</span></div>' +
+      '<div data-a="gTitle" class="dib-tile__title">' + s.title + '</div>' +
+    '</div>' +
+    '<div data-a="gRule" class="dib-tile__rule" style="background:' + s.accent + '"></div>';
+  grid.appendChild(a);
+});
+window.dibHome = { heroZoom: 3.2 };
+window.dibSite = { grain: true };
+</script>
+<script src="home.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
